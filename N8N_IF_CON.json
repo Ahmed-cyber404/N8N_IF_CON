@@ -1,0 +1,270 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3196cde2-72de-4bef-9298-405cc06e3a12",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g",
+          "mode": "list",
+          "cachedResultName": "N8N Test",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        224,
+        0
+      ],
+      "id": "3f24fadf-5c72-42f1-91a1-305fc441f028",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "o23WN5eSEfvBX4fW",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 4
+          },
+          "conditions": [
+            {
+              "id": "c1cdaec6-0290-4dc4-8b8c-19fa956662da",
+              "leftValue": "={{ $json['Current price'] }}",
+              "rightValue": 1000,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.4,
+      "position": [
+        448,
+        0
+      ],
+      "id": "e6a6b017-46f3-4dd7-b6a8-cf31ec705c6c",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g",
+          "mode": "list",
+          "cachedResultName": "N8N Test",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1187850428,
+          "mode": "list",
+          "cachedResultName": "Sheet2",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit#gid=1187850428"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Product": "={{ $json.Product }}",
+            "Current price": "={{ $json['Current price'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Product",
+              "displayName": "Product",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Current price",
+              "displayName": "Current price",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        672,
+        -96
+      ],
+      "id": "a0c8b981-976c-49ad-9e85-5dceeb584a9d",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "o23WN5eSEfvBX4fW",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g",
+          "mode": "list",
+          "cachedResultName": "N8N Test",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 913578144,
+          "mode": "list",
+          "cachedResultName": "Sheet3",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit#gid=913578144"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Product": "={{ $json.Product }}",
+            "Current price": "={{ $json['Current price'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Product",
+              "displayName": "Product",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Current price",
+              "displayName": "Current price",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        672,
+        96
+      ],
+      "id": "9016791e-0cc9-49f1-a5e4-6d3ad3cc556c",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "o23WN5eSEfvBX4fW",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "8fc79770-9abc-4bed-baa4-43f2767e1d5e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9dbc01a16ee5ef81ca6d9825e99190d82decca4fae9f14e2015499fc0d482f30"
+  },
+  "nodeGroups": [],
+  "id": "7RUYptjDxqzfQfgb",
+  "tags": []
+}
